@@ -1,7 +1,15 @@
+<!DOCTYPE html>
 <html>
-  <script src="js/Chart.js"></script>
+  <head>
+    <!--[if lte IE 8]>
+		<script src="js/excanvas.js"></script>
+	<![endif]-->
+    <script src="js/Chart.js"></script>
+   
+  </head>
+
   
-  <body>
+  <body onload="load()">
     <canvas id="lineChart" width="600" height="400"></canvas>
     <canvas id="barChart" width="600" height="400"></canvas><div></div>
     <canvas id="radarChart" width="600" height="400"></canvas>
@@ -9,6 +17,7 @@
     <canvas id="pieChart" width="600" height="400"></canvas>
     <canvas id="doughnut" width="600" height="400"></canvas><div></div>
   </body>
+ 
   <script type="text/javascript">
   var data = {
 			labels : ["January","February","March","April","May","June","July"],
@@ -28,7 +37,7 @@
 					data : [28,48,40,19,96,27,100]
 				}
 			]
-		}
+		};
   var options = {
 			
 			//Boolean - If we show the scale above the chart data			
@@ -112,15 +121,7 @@
 			onAnimationComplete : null
 			
 		}
-  var ctx = document.getElementById("lineChart").getContext("2d");
-  var lineChart = new Chart(ctx).Line(data,options);
   
-  ctx = document.getElementById("barChart").getContext("2d");
-  var barChart = new Chart(ctx).Bar(data,options);
-  
-  
-  ctx = document.getElementById("radarChart").getContext("2d");
-  var radarChart = new Chart(ctx).Radar(data,options);
   
   var data1 = [
           	{
@@ -147,14 +148,25 @@
           		value : 8,
           		color: "#584A5E"
           	}
-          ]
-  ctx = document.getElementById("polarArea").getContext("2d");
-  var polarArea = new Chart(ctx).PolarArea(data1,options);
-  
-  ctx = document.getElementById("pieChart").getContext("2d");
-  var pieChart = new Chart(ctx).Pie(data1,options);
-  
-  ctx = document.getElementById("doughnut").getContext("2d");
-  var pieChart = new Chart(ctx).Doughnut(data1,options);
+          ];
+  function load(){
+	  var ctx = document.getElementById("lineChart").getContext("2d");
+	  var lineChart = new Chart(ctx).Line(data,options);
+	  
+	  ctx = document.getElementById("barChart").getContext("2d");
+	  var barChart = new Chart(ctx).Bar(data,options);
+	  
+	  
+	  ctx = document.getElementById("radarChart").getContext("2d");
+	  var radarChart = new Chart(ctx).Radar(data,options);
+	  ctx = document.getElementById("polarArea").getContext("2d");
+	  var polarArea = new Chart(ctx).PolarArea(data1,options);
+	  
+	  ctx = document.getElementById("pieChart").getContext("2d");
+	  var pieChart = new Chart(ctx).Pie(data1,options);
+	  
+	  ctx = document.getElementById("doughnut").getContext("2d");
+	  var pieChart = new Chart(ctx).Doughnut(data1,options);
+  }
   </script>
 </html>
