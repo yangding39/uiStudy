@@ -150,6 +150,11 @@
           	}
           ];
   function load(){
+	  var ie8below = !-[1,];
+	  if (ie8below) {
+		  //if ie8
+		  options.animation = false;
+	  }
 	  var ctx = document.getElementById("lineChart").getContext("2d");
 	  var lineChart = new Chart(ctx).Line(data,options);
 	  
